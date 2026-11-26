@@ -53,13 +53,13 @@ $page = min($page, $totalPages);
 $offset = ($page - 1) * $perPage;
 $productsQuery = db()->prepare(
     "SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON c.id = p.categoria_id " .
-    "WHERE $whereSql ORDER BY {$orders[$sort]} LIMIT :limit OFFSET :offset"
+    "WHERE $whereSql ORDER BY {$orders[$sort]} LIMIT ? OFFSET ?"
 );
 foreach ($params as $index => $value) {
     $productsQuery->bindValue($index + 1, $value);
 }
-$productsQuery->bindValue(':limit', $perPage, PDO::PARAM_INT);
-$productsQuery->bindValue(':offset', $offset, PDO::PARAM_INT);
+$productsQuery->bindValue(count($params) + 1, $perPage, PDO::PARAM_INT);
+$productsQuery->bindValue(count($params) + 2, $offset, PDO::PARAM_INT);
 $productsQuery->execute();
 $products = $productsQuery->fetchAll();
 

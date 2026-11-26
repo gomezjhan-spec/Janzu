@@ -28,6 +28,8 @@ $fallbackPath = foto_src(['id' => 2, 'nombre' => 'Prueba', 'imagen' => '../datab
 $assert(str_contains($fallbackPath, 'assets/img/cap-placeholder.svg'), 'Una ruta de imagen no válida debe usar el recurso neutro.');
 $card = tarjeta(['id' => 7, 'nombre' => 'Prueba urbana', 'categoria' => 'Adultos', 'descripcion' => 'Una descripción suficientemente larga para validar la tarjeta.', 'precio' => 52000, 'stock' => 3, 'destacado' => 0, 'imagen' => null]);
 $assert(str_contains($card, 'data-cart-add') && str_contains($card, 'action="/carrito.php"'), 'Las tarjetas deben enviar el alta a la bolsa sin forzar navegación.');
+$catalogSource = file_get_contents(__DIR__ . '/../tienda.php');
+$assert(is_string($catalogSource) && str_contains($catalogSource, 'LIMIT ? OFFSET ?') && !str_contains($catalogSource, 'LIMIT :limit OFFSET :offset'), 'La consulta del catálogo debe usar parámetros PDO de un solo tipo.');
 
 if ($failures) {
     fwrite(STDERR, "Fallaron " . count($failures) . " de $checks comprobaciones:\n- " . implode("\n- ", $failures) . "\n");
