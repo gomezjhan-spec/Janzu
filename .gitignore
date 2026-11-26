@@ -1,0 +1,5 @@
+/config/database.local.php
+/assets/img/productos/product-*.jpg
+/assets/img/productos/product-*.jpeg
+/assets/img/productos/product-*.png
+/assets/img/productos/product-*.webp
