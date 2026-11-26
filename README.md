@@ -67,7 +67,15 @@ Abre una terminal de Laragon en la carpeta del proyecto y ejecuta:
 php tests/smoke.php
 ```
 
-El chequeo valida funciones de salida, precios, rutas, formularios CSRF y saneamiento básico del carrito. Después sigue los flujos de la lista `tests/acceptance-checklist.md` con Apache y MySQL activos.
+El chequeo valida funciones de salida, precios, rutas, formularios CSRF y saneamiento básico del carrito. Después sigue los flujos de la lista `tests/acceptance-checklist.md` con Apache y MySQL activos. El smoke test fija un directorio raíz y una ruta temporal de sesiones para poder ejecutarse desde CLI sin depender de la configuración local de Laragon.
+
+## Entrega académica DCIU
+
+La memoria completa del proyecto, alineada con las cinco etapas de la guía del curso, está en [`documentacion/PROYECTO_JANZU_DCIU.md`](documentacion/PROYECTO_JANZU_DCIU.md). Incluye planificación, requisitos funcionales y no funcionales, roles, casos de uso, historias de usuario, modelo de datos, estrategia de contenido UX, casos de prueba, manuales y matriz de correspondencia con la guía.
+
+Antes de entregar, completa nombres y fechas reales, y anexa evidencia auténtica de entrevistas, pruebas con personas, capturas por resolución/navegador y evaluación automática de accesibilidad. La memoria distingue esos pendientes de las funciones ya implementadas; no presenta resultados ficticios.
+
+El protocolo ampliado de validación está en [`tests/acceptance-checklist.md`](tests/acceptance-checklist.md). Las acciones que cambian pedidos, inventario o cuentas se deben probar en una base aislada con respaldo.
 
 ## Alcance del pago y el envío
 

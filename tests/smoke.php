@@ -1,6 +1,12 @@
 <?php
 declare(strict_types=1);
 
+if (PHP_SAPI === 'cli') {
+    // Keep the smoke test independent from Laragon's DOCUMENT_ROOT and session path.
+    $_SERVER['DOCUMENT_ROOT'] = dirname(__DIR__);
+    ini_set('session.save_path', sys_get_temp_dir());
+}
+
 require_once __DIR__ . '/../includes/funciones.php';
 
 $checks = 0;
